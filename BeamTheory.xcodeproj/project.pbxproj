@@ -9,10 +9,15 @@
 /* Begin PBXBuildFile section */
 		AA5E13651A2A253B009E012E /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA5E13641A2A253B009E012E /* ResourcePath.mm */; };
 		AA5E13681A2A253B009E012E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA5E13671A2A253B009E012E /* main.cpp */; };
-		AA5E136B1A2A253B009E012E /* cute_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA5E136A1A2A253B009E012E /* cute_image.jpg */; };
-		AA5E136D1A2A253B009E012E /* nice_music.ogg in Resources */ = {isa = PBXBuildFile; fileRef = AA5E136C1A2A253B009E012E /* nice_music.ogg */; };
-		AA5E136F1A2A253B009E012E /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA5E136E1A2A253B009E012E /* sansation.ttf */; };
-		AA5E13711A2A253B009E012E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5E13701A2A253B009E012E /* icon.png */; };
+		AA5E13781A2A2584009E012E /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5E13771A2A2584009E012E /* SDL2.framework */; };
+		AA5E137A1A2A25EA009E012E /* glm in Resources */ = {isa = PBXBuildFile; fileRef = AA5E13791A2A25EA009E012E /* glm */; };
+		AA5E137C1A2A2608009E012E /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5E137B1A2A2608009E012E /* OpenGL.framework */; };
+		AA5E137F1A2A2661009E012E /* MainGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA5E137D1A2A2661009E012E /* MainGame.cpp */; };
+		AA5E13821A2A2801009E012E /* GLManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA5E13801A2A2801009E012E /* GLManager.cpp */; };
+		AA5E13841A2A2873009E012E /* fragmentShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AA5E13831A2A2873009E012E /* fragmentShader.glsl */; };
+		AA5E13861A2A287B009E012E /* vertexShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AA5E13851A2A287B009E012E /* vertexShader.glsl */; };
+		AA5E13891A2A297B009E012E /* Beam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA5E13871A2A297B009E012E /* Beam.cpp */; };
+		AA5E138C1A2A2ACE009E012E /* Vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA5E138A1A2A2ACE009E012E /* Vertex.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,10 +26,19 @@
 		AA5E13641A2A253B009E012E /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
 		AA5E13661A2A253B009E012E /* ResourcePath.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ResourcePath.hpp; sourceTree = "<group>"; };
 		AA5E13671A2A253B009E012E /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		AA5E136A1A2A253B009E012E /* cute_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cute_image.jpg; sourceTree = "<group>"; };
-		AA5E136C1A2A253B009E012E /* nice_music.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = nice_music.ogg; sourceTree = "<group>"; };
-		AA5E136E1A2A253B009E012E /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sansation.ttf; sourceTree = "<group>"; };
-		AA5E13701A2A253B009E012E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		AA5E13771A2A2584009E012E /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2.framework; sourceTree = "<group>"; };
+		AA5E13791A2A25EA009E012E /* glm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = glm; sourceTree = "<group>"; };
+		AA5E137B1A2A2608009E012E /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		AA5E137D1A2A2661009E012E /* MainGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainGame.cpp; sourceTree = "<group>"; };
+		AA5E137E1A2A2661009E012E /* MainGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainGame.h; sourceTree = "<group>"; };
+		AA5E13801A2A2801009E012E /* GLManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLManager.cpp; sourceTree = "<group>"; };
+		AA5E13811A2A2801009E012E /* GLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLManager.h; sourceTree = "<group>"; };
+		AA5E13831A2A2873009E012E /* fragmentShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragmentShader.glsl; sourceTree = "<group>"; };
+		AA5E13851A2A287B009E012E /* vertexShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertexShader.glsl; sourceTree = "<group>"; };
+		AA5E13871A2A297B009E012E /* Beam.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Beam.cpp; sourceTree = "<group>"; };
+		AA5E13881A2A297B009E012E /* Beam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Beam.h; sourceTree = "<group>"; };
+		AA5E138A1A2A2ACE009E012E /* Vertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vertex.cpp; sourceTree = "<group>"; };
+		AA5E138B1A2A2ACE009E012E /* Vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vertex.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +46,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA5E137C1A2A2608009E012E /* OpenGL.framework in Frameworks */,
+				AA5E13781A2A2584009E012E /* SDL2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +57,8 @@
 		AA5E13551A2A253B009E012E = {
 			isa = PBXGroup;
 			children = (
+				AA5E137B1A2A2608009E012E /* OpenGL.framework */,
+				AA5E13771A2A2584009E012E /* SDL2.framework */,
 				AA5E13611A2A253B009E012E /* BeamTheory */,
 				AA5E13601A2A253B009E012E /* Products */,
 			);
@@ -57,11 +75,20 @@
 		AA5E13611A2A253B009E012E /* BeamTheory */ = {
 			isa = PBXGroup;
 			children = (
+				AA5E13801A2A2801009E012E /* GLManager.cpp */,
+				AA5E13811A2A2801009E012E /* GLManager.h */,
+				AA5E13791A2A25EA009E012E /* glm */,
 				AA5E13641A2A253B009E012E /* ResourcePath.mm */,
 				AA5E13661A2A253B009E012E /* ResourcePath.hpp */,
 				AA5E13671A2A253B009E012E /* main.cpp */,
 				AA5E13691A2A253B009E012E /* Resources */,
 				AA5E13621A2A253B009E012E /* Supporting Files */,
+				AA5E137D1A2A2661009E012E /* MainGame.cpp */,
+				AA5E137E1A2A2661009E012E /* MainGame.h */,
+				AA5E13871A2A297B009E012E /* Beam.cpp */,
+				AA5E13881A2A297B009E012E /* Beam.h */,
+				AA5E138A1A2A2ACE009E012E /* Vertex.cpp */,
+				AA5E138B1A2A2ACE009E012E /* Vertex.h */,
 			);
 			path = BeamTheory;
 			sourceTree = "<group>";
@@ -77,10 +104,8 @@
 		AA5E13691A2A253B009E012E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AA5E136A1A2A253B009E012E /* cute_image.jpg */,
-				AA5E136C1A2A253B009E012E /* nice_music.ogg */,
-				AA5E136E1A2A253B009E012E /* sansation.ttf */,
-				AA5E13701A2A253B009E012E /* icon.png */,
+				AA5E13831A2A2873009E012E /* fragmentShader.glsl */,
+				AA5E13851A2A287B009E012E /* vertexShader.glsl */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -95,7 +120,6 @@
 				AA5E135A1A2A253B009E012E /* Sources */,
 				AA5E135B1A2A253B009E012E /* Frameworks */,
 				AA5E135C1A2A253B009E012E /* Resources */,
-				AA5E135D1A2A253B009E012E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -142,38 +166,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA5E13711A2A253B009E012E /* icon.png in Resources */,
-				AA5E136F1A2A253B009E012E /* sansation.ttf in Resources */,
-				AA5E136D1A2A253B009E012E /* nice_music.ogg in Resources */,
-				AA5E136B1A2A253B009E012E /* cute_image.jpg in Resources */,
+				AA5E13861A2A287B009E012E /* vertexShader.glsl in Resources */,
+				AA5E13841A2A2873009E012E /* fragmentShader.glsl in Resources */,
+				AA5E137A1A2A25EA009E012E /* glm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		AA5E135D1A2A253B009E012E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This shell script simply copies required sfml dylibs/frameworks into the application bundle frameworks folder.\n# If you're using static libraries (which is not recommended) you should remove this script from your project.\n\n# Are we building a project that uses framework or dylibs ?\ncase \"$SFML_BINARY_TYPE\" in\n    DYLIBS)\n        frameworks=\"false\"\n        ;;\n    *)\n        frameworks=\"true\"\n        ;;\nesac\n\n# Echoes to stderr\nerror () # $* message to display\n{\n    echo $* 1>&2\n    exit 2\n}\n\nassert () # $1 is a boolean, $2...N is an error message\n{\n    if [ $# -lt 2 ]\n    then\n        error \"Internal error in assert : not enough args\"\n    fi\n\n    if [ $1 -ne 0 ]\n    then\n        shift\n        error \"$*\"\n    fi\n}\n\nforce_remove () # $1 is a path\n{\n    test $# -eq 1\n    assert $? \"force_remove() requires one parameter\"\n    rm -fr \"$1\"\n    assert $? \"couldn't remove $1\"\n}\n\ncopy () # $1 is a source, $2 is a destination\n{\n    test $# -eq 2\n    assert $? \"copy() requires two parameters\"\n    ditto \"$1\" \"$2\"\n    assert $? \"couldn't copy $1 to $2\"\n}\n\nrequire () # $1 is a SFML module like 'system' or 'audio'\n{\n    dest=\"$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.app/Contents/Frameworks\"\n\n    if [ -z \"$1\" ]\n    then\n        error \"require() requires one parameter!\"\n    else\n        # clean potentially old stuff\n        force_remove \"$dest/libsfml-$1.2.dylib\"\n        force_remove \"$dest/libsfml-$1-d.2.dylib\"\n        force_remove \"$dest/sfml-$1.framework\"\n\n        # copy SFML libraries\n        if [ \"$frameworks\" = \"true\" ]\n        then\n            copy \"/Library/Frameworks/sfml-$1.framework\" \"$dest/sfml-$1.framework\"\n        elif [ \"$SFML_LINK_DYLIBS_SUFFIX\" = \"-d\" ]\n        then\n            copy \"/usr/local/lib/libsfml-$1-d.2.dylib\" \"$dest/libsfml-$1-d.2.dylib\"\n        else\n            copy \"/usr/local/lib/libsfml-$1.2.dylib\" \"$dest/libsfml-$1.2.dylib\"\n        fi\n\n        if [ \"$1\" = \"audio\" ]\n        then\n            # copy sndfile framework too\n            copy \"/Library/Frameworks/sndfile.framework\" \"$dest/sndfile.framework\"\n        fi\n\n        if [ \"$1\" = \"graphics\" ]\n        then\n            # copy freetype framework too\n            copy \"/Library/Frameworks/freetype.framework\" \"$dest/freetype.framework\"\n        fi\n    fi\n}\n\nif [ -n \"$SFML_SYSTEM\" ]\nthen\n    require \"system\"\nfi\n\nif [ -n \"$SFML_AUDIO\" ]\nthen\n    require \"audio\"\nfi\n\nif [ -n \"$SFML_NETWORK\" ]\nthen\n    require \"network\"\nfi\n\nif [ -n \"$SFML_WINDOW\" ]\nthen\n    require \"window\"\nfi\n\nif [ -n \"$SFML_GRAPHICS\" ]\nthen\n    require \"graphics\"\nfi\n\n                ";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AA5E135A1A2A253B009E012E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA5E13821A2A2801009E012E /* GLManager.cpp in Sources */,
+				AA5E137F1A2A2661009E012E /* MainGame.cpp in Sources */,
 				AA5E13681A2A253B009E012E /* main.cpp in Sources */,
+				AA5E138C1A2A2ACE009E012E /* Vertex.cpp in Sources */,
 				AA5E13651A2A253B009E012E /* ResourcePath.mm in Sources */,
+				AA5E13891A2A297B009E012E /* Beam.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +296,12 @@
 		AA5E13751A2A253B009E012E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "BeamTheory/BeamTheory-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -293,7 +309,12 @@
 		AA5E13761A2A253B009E012E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "BeamTheory/BeamTheory-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
