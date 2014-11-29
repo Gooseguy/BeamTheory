@@ -29,7 +29,7 @@ public:
     void Draw();
     void Update();
     
-    inline void MouseClick(float x, float y);
+    void MouseClick(float x, float y, int variance);
     
     void Reset();
     
@@ -46,15 +46,7 @@ private:
     inline float getStress(int i);
     inline glm::vec3 getColor(int i);
 };
-void Beam::MouseClick(float x, float y)
-{
-    int xp = x*LENGTH;
-    if (xp<LENGTH && xp>0)
-    {
-        displacement[xp]=y;
-        prevDisplacement[xp]=y;
-    }
-}
+
 
 float Beam::getStress(int i)
 {

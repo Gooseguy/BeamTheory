@@ -86,14 +86,15 @@ void Beam::Update()
         {
             float sig=0;
             if (i>0) sig-=4*nextDisplacement[i-1];
-//            else sig += 2*nextDisplacement[i] - nextDisplacement[i+1];
             if (i>1) sig+=nextDisplacement[i-2];
+//            else if (i==1) sig+=(nextDisplacement[i+1]-nextDisplacement[i-1])/2 + nextDisplacement[i-1];
 //            else  sig+=3 * nextDisplacement[i+1] - 3*nextDisplacement[i+2] + nextDisplacement[i+3];
             if (i<LENGTH-1) sig-=4*nextDisplacement[i+1];
             if (i<LENGTH-2) sig+=nextDisplacement[i+2];
 //            else sig+=2*nextDisplacement[i]-nextDisplacement[i-1];
 //            float sig = displacement[i+2] - 4*displacement[i+1] - 4*displacement[i-1] + displacement[i-2];
             nextDisplacement[i]+=omega * (((-0.1f*(nextDisplacement[i] - 2*displacement[i] + prevDisplacement[i])-sig)/(6.f)-nextDisplacement[i]));
+            
         }
     }
 //    prevPrevDisplacement = prevDisplacement;
@@ -139,4 +140,12 @@ void Beam::Reset() {
 //        displacement[i] = sin(M_PI * i / LENGTH)*100;
 //        prevDisplacement[i] = sin(M_PI * (i) / LENGTH)*100;
     }
+}
+
+void Beam::MouseClick(float x, float y, int variance)
+{
+    int xp = x * LENGTH;
+    xp = std::max(std::min(xp,LENGTH-1), 0);
+    displacement[xp]=y;
+    prevDisplacement[xp]=y;
 }

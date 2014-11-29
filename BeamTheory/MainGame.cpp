@@ -80,7 +80,7 @@ void MainGame::update(Beam &beam)
 {
     int x,y;
     if (SDL_GetMouseState(&x,&y) & SDL_BUTTON(SDL_BUTTON_LEFT))
-        beam.MouseClick((float)x/windowWidth, (-(float)y/windowHeight+0.5)/beam.SCALE_Y*2);
+        beam.MouseClick((float)x/windowWidth, (-(float)y/windowHeight+0.5)/beam.SCALE_Y*2, 1);
     if (!paused) for (int i=0;i<10;++i)
         beam.Update();
     
