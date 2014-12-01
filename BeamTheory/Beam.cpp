@@ -8,7 +8,7 @@
 
 #include "Beam.h"
 
-Beam::Beam(int length, float spacing, float timeStep, float beamConstant) : LENGTH(length), SPACING(spacing), TIME_STEP(timeStep), BEAM_CONSTANT(beamConstant), displacement(LENGTH), prevDisplacement(LENGTH), SCALE_Y(0.001), SCALE_X(2.0f/LENGTH/SPACING), SHIFT(-1,0), BeamThickness(0.01f)
+Beam::Beam(int length, float spacing, float timeStep, float beamConstant) : LENGTH(length), SPACING(spacing), TIME_STEP(timeStep), BEAM_CONSTANT(beamConstant), displacement(LENGTH), prevDisplacement(LENGTH), SCALE_Y(0.001), SCALE_X(2.0f/LENGTH/SPACING), SHIFT(-1,0), BeamThickness(0.01f), Boundary1(BoundaryType::FREE), Boundary2(BoundaryType::CLAMP)
 {
     generateBuffers();
     Reset();
@@ -74,7 +74,7 @@ void Beam::Update()
 //    }
     
     std::vector<float> nextDisplacement = displacement;
-    const float omega = 1.5;
+    const float omega = 1.2;
     const float SPACING4=1;//SPACING*SPACING*SPACING*SPACING;
     const float SPACING3=SPACING*SPACING*SPACING;
     
@@ -85,12 +85,7 @@ void Beam::Update()
         for (int i = 0;i<LENGTH;++i)
         {
             float sig=0;
-            if (i>0) sig-=4*nextDisplacement[i-1];
-            if (i>1) sig+=nextDisplacement[i-2];
-//            else if (i==1) sig+=(nextDisplacement[i+1]-nextDisplacement[i-1])/2 + nextDisplacement[i-1];
-//            else  sig+=3 * nextDisplacement[i+1] - 3*nextDisplacement[i+2] + nextDisplacement[i+3];
-            if (i<LENGTH-1) sig-=4*nextDisplacement[i+1];
-            if (i<LENGTH-2) sig+=nextDisplacement[i+2];
+            constrainBoundaries(nextDisplacement, sig, i);
 //            else sig+=2*nextDisplacement[i]-nextDisplacement[i-1];
 //            float sig = displacement[i+2] - 4*displacement[i+1] - 4*displacement[i-1] + displacement[i-2];
             nextDisplacement[i]+=omega * (((-0.1f*(nextDisplacement[i] - 2*displacement[i] + prevDisplacement[i])-sig)/(6.f)-nextDisplacement[i]));
@@ -119,17 +114,43 @@ void Beam::updateBuffers()
     glBindVertexArray(0);
 }
 
-void Beam::constrainBoundaries()
+void Beam::constrainBoundaries(std::vector<float>& nextDisplacement, float &sigma, int i)
 {
-    displacement[0] = 0;
-    displacement[1] = 0;
-    displacement[LENGTH-2] = 0;
-    displacement[LENGTH-1] = 0;
-//    prevDisplacement[0] = displacement[0];
-//    prevDisplacement[1] = displacement[1];
-//    prevDisplacement[LENGTH-2] = displacement[LENGTH-2];
-//    prevDisplacement[LENGTH-1] = displacement[LENGTH-1];
+    if (i>1) sigma+=nextDisplacement[i-2]-4*nextDisplacement[i-1];
+    else
+    {
+        switch (Boundary1)
+        {
+            case BoundaryType::CLAMP:
+                nextDisplacement[i]=3*nextDisplacement[i+2];
+                break;
+            case BoundaryType::FREE:
+//                sigma+=-6*nextDisplacement[i]+3*nextDisplacement[i+1];
+                sigma+=-4*nextDisplacement[i]+nextDisplacement[i+2];
+                break;
+            case BoundaryType::SIMPLE_SUPPORT:
+                break;
+        }
+    }
     
+    
+    if (i<LENGTH-2) sigma+=nextDisplacement[i+2]-4*nextDisplacement[i+1];
+    else
+    {
+        switch (Boundary2)
+        {
+            case BoundaryType::CLAMP:
+                nextDisplacement[i]=0;
+                nextDisplacement[i-1]=0;
+//                sigma+=2*nextDisplacement[i]-nextDisplacement[i-1];
+                break;
+            case BoundaryType::FREE:
+//                sigma+=-6*nextDisplacement[i-1]+3*nextDisplacement[i-2];
+                break;
+            case BoundaryType::SIMPLE_SUPPORT:
+                break;
+        }
+    }
 }
 
 void Beam::Reset() {
@@ -140,12 +161,15 @@ void Beam::Reset() {
 //        displacement[i] = sin(M_PI * i / LENGTH)*100;
 //        prevDisplacement[i] = sin(M_PI * (i) / LENGTH)*100;
     }
+    
 }
 
-void Beam::MouseClick(float x, float y, int variance)
+void Beam::MouseClick(float x, float y, float px, float py)
 {
     int xp = x * LENGTH;
     xp = std::max(std::min(xp,LENGTH-1), 0);
+    int xpp = x * LENGTH;
+    xpp = std::max(std::min(xpp,LENGTH-1), 0);
     displacement[xp]=y;
-    prevDisplacement[xp]=y;
+    prevDisplacement[xpp]=py;
 }

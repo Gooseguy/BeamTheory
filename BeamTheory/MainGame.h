@@ -19,6 +19,7 @@ public:
     
     MainGame();
 private:
+    glm::vec2 mousePosPrev;
     SDL_Window* window;
     int windowWidth, windowHeight;
     void handleEvents(Beam& beam);

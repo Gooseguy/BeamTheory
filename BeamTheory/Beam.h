@@ -16,6 +16,17 @@ class Beam
 public:
     Beam(int length, float spacing, float timeStep, float beamConstant);
     
+    enum class BoundaryType
+    {
+        CLAMP,
+        SIMPLE_SUPPORT,
+        FREE,
+    };
+    
+    BoundaryType Boundary1;
+    BoundaryType Boundary2;
+    
+    
     const int LENGTH;
     const float TIME_STEP;
     const float SPACING;
@@ -29,12 +40,14 @@ public:
     void Draw();
     void Update();
     
-    void MouseClick(float x, float y, int variance);
+    void MouseClick(float x, float y, float px, float py);
     
     void Reset();
     
 private:
-    void constrainBoundaries();
+    void constrainBoundaries(std::vector<float>& nextDisplacement, float& sigma, int i);
+    
+
     
     GLuint vbo, ibo, vao;
     void generateBuffers();
