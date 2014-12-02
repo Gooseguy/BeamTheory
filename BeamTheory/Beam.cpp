@@ -8,7 +8,7 @@
 
 #include "Beam.h"
 
-Beam::Beam(int length, float spacing, float timeStep, float beamConstant) : LENGTH(length), SPACING(spacing), TIME_STEP(timeStep), BEAM_CONSTANT(beamConstant), displacement(LENGTH), prevDisplacement(LENGTH), SCALE_Y(0.001), SCALE_X(2.0f/LENGTH/SPACING), SHIFT(-1,0), BeamThickness(0.01f), Boundary1(BoundaryType::FREE), Boundary2(BoundaryType::CLAMP)
+Beam::Beam(int length, float spacing, float timeStep, float beamConstant) : LENGTH(length), SPACING(spacing), TIME_STEP(timeStep), BEAM_CONSTANT(beamConstant), displacement(LENGTH), prevDisplacement(LENGTH), SCALE_Y(0.001), SCALE_X(2.0f/LENGTH/SPACING), SHIFT(-1,0), BeamThickness(0.01f), Boundary1(BoundaryType::SIMPLE_SUPPORT), Boundary2(BoundaryType::CLAMP)
 {
     generateBuffers();
     Reset();
@@ -122,13 +122,17 @@ void Beam::constrainBoundaries(std::vector<float>& nextDisplacement, float &sigm
         switch (Boundary1)
         {
             case BoundaryType::CLAMP:
-                nextDisplacement[i]=3*nextDisplacement[i+2];
+                sigma+=nextDisplacement[i+2];
+                nextDisplacement[i]=0;
                 break;
             case BoundaryType::FREE:
 //                sigma+=-6*nextDisplacement[i]+3*nextDisplacement[i+1];
                 sigma+=-4*nextDisplacement[i]+nextDisplacement[i+2];
                 break;
             case BoundaryType::SIMPLE_SUPPORT:
+//                sigma+=3*nextDisplacement[i+2];
+                sigma+=2*nextDisplacement[i+1]-nextDisplacement[i+2];
+                nextDisplacement[i]=0;
                 break;
         }
     }
@@ -141,11 +145,12 @@ void Beam::constrainBoundaries(std::vector<float>& nextDisplacement, float &sigm
         {
             case BoundaryType::CLAMP:
                 nextDisplacement[i]=0;
-                nextDisplacement[i-1]=0;
+//                nextDisplacement[i-1]=0;
 //                sigma+=2*nextDisplacement[i]-nextDisplacement[i-1];
                 break;
             case BoundaryType::FREE:
 //                sigma+=-6*nextDisplacement[i-1]+3*nextDisplacement[i-2];
+                sigma+=-4*nextDisplacement[i]+nextDisplacement[i-2];
                 break;
             case BoundaryType::SIMPLE_SUPPORT:
                 break;
